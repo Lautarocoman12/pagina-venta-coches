@@ -1,0 +1,653 @@
+
+
+/* === CARRUSEL PROFESIONAL === */
+
+.hero-slider {
+    position: relative;
+    margin-top: 10px; /* para que no tape el navbar */
+    width: 100%;
+    max-width: 1400px;
+    height: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Botones izquierda/derecha */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 12px;
+    font-size: 26px;
+    color: white;
+    background: rgba(0,0,0,0.35);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slider-btn:hover {
+    background: rgba(0,0,0,0.6);
+}
+
+.prev {
+    left: 15px;
+}
+
+.next {
+    right: 15px;
+}
+
+
+
+
+
+
+/* --- RESET IMPORTANTÍSIMO PARA QUE NO ROMPA EN DJANGO --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- BODY --- */
+
+body {
+    background: linear-gradient(to bottom, #270101, #260000, #070000);
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+
+/* --- NAVBAR ESTILO DYNAMIC ISLAND --- */
+.dynamic-island {
+    background: rgba(30, 30, 30, 0.35);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    width: 75%;            /* más corta */
+    margin: 5px auto;      /* más arriba */
+    padding: 14px 22px;    /* más fina */
+    border-radius: 45px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.45);
+}
+
+
+.island-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.island-logo {
+    width: 45px;
+}
+
+.island-search {
+    width: 350px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(10, 10, 10, 0.45);
+    backdrop-filter: blur(8px);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+.island-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.island-btn {
+    background: rgba(255, 0, 0, 0.85);
+    background-color: red;
+    padding: 8px 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+}
+
+.cart {
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+/* --- Contenedor global --- */
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+/* === INDICADORES INFERIORES === */
+
+.indicators {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    width: 70px;
+    height: 4px;
+    background: rgba(255,255,255,0.35);
+    border-radius: 3px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.active-dot {
+    background: white;
+    width: 90px;
+}
+
+
+/* === FORMULARIOS (LOGIN / REGISTRO) === */
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 30px;
+    background: rgba(20, 20, 20, 0.45);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+    text-align: center;
+    color: white;
+}
+
+.card h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Inputs */
+.card input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 15px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s;
+}
+
+.card input:focus {
+    border-color: rgba(255, 0, 0, 0.7);
+    box-shadow: 0 0 8px rgba(255,0,0,0.4);
+}
+
+/* Botón enviar */
+.card button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: rgba(255, 0, 0, 0.85);
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.card button:hover {
+    background: rgba(255, 50, 50, 0.9);
+    transform: scale(1.03);
+}
+
+/* Divider */
+.divider {
+    margin: 20px 0;
+    color: #bbb;
+    font-size: 14px;
+}
+
+/* Google button */
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: white;
+    color: black;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(255,255,255,0.1);
+    transition: 0.25s;
+}
+
+.google-btn:hover {
+    transform: scale(1.03);
+}
+
+/* Texto error */
+.error {
+    color: #ff5b5b;
+    background: rgba(255,0,0,0.15);
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Link abajo */
+.register-link {
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: rgba(255, 0, 0, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* === BOTÓN PRINCIPAL BAJO EL CARRUSEL === */
+
+.main-action-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.main-action-btn {
+    background: linear-gradient(90deg, #ff0a0a, #b30000);
+    color: white;
+    padding: 18px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 40px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.35);
+    backdrop-filter: blur(4px);
+    transition: 0.25s ease-in-out;
+}
+
+.main-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 0, 0, 0.55);
+    background: linear-gradient(90deg, #ff1a1a, #cc0000);
+}
+
+/* ====== SECCIÓN SELECTOR ====== */
+.selector-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+/* Botones arriba */
+.selector-options {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.selector-btn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    padding-bottom: 8px;
+    cursor: pointer;
+    color: #444;
+    position: relative;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.selector-btn:hover {
+    color: #970d0d;
+}
+
+.selector-btn.active {
+    color: #ff0000;
+}
+
+.selector-btn.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 3px;
+    background: #ff0000;
+    border-radius: 2px;
+}
+
+/* Imagen + título */
+.selector-display img {
+    width: 70%;
+    max-height: 350px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.selector-display h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+
+.cart-icon {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+}
+
+.cart-icon:hover {
+    transform: scale(1.1);
+}
+
+
+/* === SECCIÓN DE SERVICIOS === */
+
+.services-section {
+    margin-top: 80px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    text-align: center;
+}
+
+.service-card {
+    flex: 1;
+    padding: 35px 20px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.service-card h3{
+    color: black;
+}
+.service-card:hover {
+    background: #ff3b3b; /* rojo */
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.service-card:hover .service-link {
+    color: white;
+}
+
+.service-link a{
+ color: #b30000;
+}
+
+.service-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.service-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.service-link {
+    font-size: 16px;
+    color: royalblue;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.service-card:hover .service-icon {
+    filter: brightness(0) invert(1); /* vuelve el icono blanco */
+}
+
+
+/* ----- FOOTER PROFESIONAL ----- */
+
+.footer {
+    background: #111;
+    color: #eee;
+    padding-top: 40px;
+    margin-top: 60px;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+    padding-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-col h3, .footer-col h4 {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: red;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    text-align: center;
+    padding: 12px 0;
+    color: #aaa;
+    font-size: 14px;
+}
+
+
+/* CONTENEDOR DEL BOTÓN */
+.hamburger-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
+}
+
+/* BOTÓN HAMBURGUESA */
+.hamburger-btn {
+    width: 55px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 10px 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.hamburger-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hamburger-btn span {
+    width: 100%;
+    height: 4px;
+    background: white;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* ANIMACIÓN AL ABRIR */
+.hamburger-btn.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* MENÚ DESPLEGABLE */
+.hamburger-menu {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+
+    width: 260px;
+    padding: 25px;
+
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 1500;
+}
+
+.hamburger-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 5px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.hamburger-menu a:hover {
+    background: red;
+}
+
+/* MENÚ VISIBLE */
+.hamburger-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+
+.selector-display {
+    display: flex;
+    align-items: center;       /* centra verticalmente */
+    gap: 20px;                 /* espacio entre imagen y texto */
+    margin-top: 20px;
+}
+
+/* Ajustás el tamaño de la imagen si querés */
+.selector-display img {
+    width: 350px;   /* podés cambiarlo a lo que quieras */
+    height: auto;
+}
+
+/* Estilo del título */
+#selector-title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+
+.selector-display {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* espacio entre coche y texto */
+    overflow: hidden; /* para que la animación no desborde */
+}
+
+/* Animación general (tanto coche como texto) */
+.animate-in {
+    animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#selector-image {
+    width: 420px;
+    max-width: 100%;
+}

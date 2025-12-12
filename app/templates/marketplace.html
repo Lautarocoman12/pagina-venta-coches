@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Marketplace{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'app/marketplace.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="market-header">
+    <h1>Marketplace de Coches</h1>
+    <a href= class="publish-btn">+ Publicar Coche</a>
+</div>
+
+<div class="market-layout">
+
+    <!-- LATERAL -->
+    <aside class="market-sidebar">
+        <h3>Categorías</h3>
+        <ul>
+            <li><a href="#">🚗 Autos</a></li>
+            <li><a href="#">🚙 SUVs</a></li>
+            <li><a href="#">🛻 Pick Ups</a></li>
+            <li><a href="#">⚡ Eléctricos</a></li>
+            <li><a href="#">🔋 Híbridos</a></li>
+        </ul>
+    </aside>
+
+    <!-- LISTADO -->
+    <section class="market-grid">
+
+        {% for coche in coches %}
+        <div class="item-card">
+            <img src="{{ coche.imagen.url }}" class="item-img">
+
+            <div class="item-info">
+                <h3 class="price">${{ coche.precio }}</h3>
+                <p class="title">{{ coche.titulo }}</p>
+                <p class="location">{{ coche.ubicacion }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-results">Todavía no hay coches publicados.</p>
+        {% endfor %}
+
+    </section>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'app/index.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="hero-slider">
+
+    <div class="slides">
+        <img src="{% static 'img/banner.png' %}" class="slide active">
+        <img src="{% static 'img/banner2.png' %}" class="slide">
+        <img src="{% static 'img/banner3.png' %}" class="slide">
+    </div>
+
+    <!-- INDICADORES -->
+    <div class="indicators">
+        <span class="dot active-dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<!-- BOTÓN PRINCIPAL -->
+<div class="main-action-container">
+    <a href="#" class="main-action-btn">Comprar y Publicar Aquí</a>
+</div>
+
+<div class="selector-section">
+
+<div class="selector-options">
+    <button class="selector-btn active" data-img="1" data-title="Autos nuevos">Autos</button>
+    <button class="selector-btn" data-img="2" data-title="SUV y 4x4">SUV</button>
+    <button class="selector-btn" data-img="3" data-title="Pick Ups disponibles">Pick Ups</button>
+    <button class="selector-btn" data-img="4" data-title="Vehículos eléctricos">Eléctricos</button>
+    <button class="selector-btn" data-img="5" data-title="Modelos híbridos">Híbridos</button>
+</div>
+
+<div class="selector-display">
+    <img id="selector-image" src="{% static 'img/op1.png' %}" alt="">
+    <h2 id="selector-title">Autos nuevos</h2>
+</div>
+
+<!-- SECCIÓN DE SERVICIOS -->
+<div class="services-section">
+
+    <div class="service-card">
+        <img src="{% static 'img/iconoventa.png' %}" class="service-icon">
+        <h3>¿Como vender mi coche?</h3>
+        <a href="#" class="service-link">Conocer →</a>
+    </div>
+
+    <div class="service-card">
+        <img src="{% static 'img/whatsappp.png' %}" class="service-icon">
+        <h3>Chateá con nosotros</h3>
+        <a href="#" class="service-link">Iniciar conversación →</a>
+    </div>
+
+    <div class="service-card">
+        <img src="{% static 'img/robot.png' %}" class="service-icon">
+        <h3>Asistencia IA</h3>
+        <a href="#" class="service-link">Descubrir →</a>
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}
