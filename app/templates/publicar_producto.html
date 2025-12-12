@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Publicar Coche{% endblock %}
+
+{% block content %}
+
+<div class="publish-box">
+
+    <h2>Publicar un Coche</h2>
+
+    <form method="POST" enctype="multipart/form-data" class="publish-form">
+        {% csrf_token %}
+
+        <label>Título del anuncio</label>
+        {{ form.titulo }}
+
+        <label>Precio</label>
+        {{ form.precio }}
+
+        <label>Ubicación</label>
+        {{ form.ubicacion }}
+
+        <label>Descripción</label>
+        {{ form.descripcion }}
+
+        <label>Imagen del coche</label>
+        {{ form.imagen }}
+
+        <button class="btn-submit">Publicar</button>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -138,6 +138,10 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
