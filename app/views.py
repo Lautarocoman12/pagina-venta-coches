@@ -34,3 +34,34 @@ def publicar_producto(request):
         form = CocheForm()
 
     return render(request, "publicar_producto.html", {"form": form})
+
+
+
+def detalle_producto(request, pk):
+    producto = Coche.objects.get(pk=pk)
+    return render(request, "detalle_producto.html", {"producto": producto})
+
+
+from .models import Coche, FotoCoche
+from .forms import CocheForm
+
+def publicar_producto(request):
+    if request.method == "POST":
+        form = CocheForm(request.POST)
+        fotos = request.FILES.getlist("fotos")
+
+        if form.is_valid():
+            coche = form.save()
+
+            for foto in fotos:
+                FotoCoche.objects.create(
+                    coche=coche,
+                    imagen=foto
+                )
+
+            return redirect("marketplace")
+
+    else:
+        form = CocheForm()
+
+    return render(request, "publicar_producto.html", {"form": form})

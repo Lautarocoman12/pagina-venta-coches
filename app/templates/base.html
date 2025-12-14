@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}Mi Proyecto{% endblock %}</title>
 
-<link rel="stylesheet" href="{% static 'app/index.css' %}?v=11">
+<link rel="stylesheet" href="{% static 'app/index.css' %}?v=12">
 
 {% block extra_css %}{% endblock %}
 
@@ -24,11 +24,11 @@
 
 <!-- MENÚ DESPLEGABLE -->
 <div class="hamburger-menu" id="hamburgerMenu">
-    <a href="#">Inicio</a>
-    <a href="#">Coches</a>
-    <a href="#">Publicar</a>
-    <a href="#">Mi Cuenta</a>
-    <a href="#">Cerrar sesión</a>
+    <a href="{% url 'index' %}">Inicio</a>
+    <a href="{% url 'marketplace' %}">Coches</a>
+    <a href="{% url 'publicar_producto' %}">Publicar</a>
+    <a href="{% url 'index' %}">Mi Cuenta</a>
+    <a href="{% url 'index' %}">Cerrar sesión</a>
 </div>
 
 
@@ -78,16 +78,16 @@
         <div class="footer-col">
             <h4>Enlaces</h4>
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Publicar coche</a></li>
-                <li><a href="#">Ver coches</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'publicar_producto' %}">Publicar coche</a></li>
+                <li><a href="{% url 'marketplace' %}">Ver coches</a></li>
+                <li><a href="{% url 'index' %}">Contacto</a></li>
             </ul>
         </div>
 
         <div class="footer-col">
             <h4>Contacto</h4>
-            <p>Email: info@misitio.com</p>
+            <p>Email: firecar002@gmail.com</p>
             <p>Tel: +54 11 1234 5678</p>
             <p>Dirección: Buenos Aires, Argentina</p>
         </div>
@@ -95,7 +95,7 @@
     </div>
 
     <div class="footer-bottom">
-        © 2025 Mi Sitio — Todos los derechos reservados
+        © 2025 Fire Car — Todos los derechos reservados
     </div>
 </footer>
 

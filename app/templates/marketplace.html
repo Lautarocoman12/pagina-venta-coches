@@ -27,7 +27,7 @@
         <ul>
             <li><a href="#">🏎 Autos</a></li>
             <li><a href="#">Autos electricos</a></li>
-            <li><a href="#"></a>Autos 4x4</li>
+            <li><a href="#">>Autos 4x4</a></li>
             <li><a href="#">Autos Automaticos</a></li>
         </ul>
     </aside>
@@ -35,20 +35,22 @@
     <!-- GRILLA DE PRODUCTOS -->
     <section class="market-grid">
 
-        {% for item in productos %}
-        <div class="product-card">
-            <img src="{{ item.imagen.url }}" class="product-img">
+       {% for item in productos %}
+<a href="{% url 'detalle_producto' item.id %}" class="product-card">
 
-            <div class="product-info">
-                <h3 class="price">${{ item.precio }}</h3>
-                <p class="title">{{ item.titulo }}</p>
-                <p class="location">{{ item.ubicacion }}</p>
-            </div>
-        </div>
+    {% if item.fotos.first %}
+        <img src="{{ item.fotos.first.imagen.url }}" class="product-img">
+    {% endif %}
 
-        {% empty %}
-        <p class="no-results">Todavía no hay productos publicados.</p>
-        {% endfor %}
+    <div class="product-info">
+        <h3 class="price">${{ item.precio }}</h3>
+        <p class="title">{{ item.marca_modelo }}</p>
+        <p class="location">{{ item.ubicacion }}</p>
+    </div>
+
+</a>
+{% endfor %}
+
 
     </section>
 

@@ -6,27 +6,45 @@
 
 <div class="publish-box">
 
-    <h2>Publicar un Coche</h2>
+    <h2>Publicar vehículo</h2>
 
     <form method="POST" enctype="multipart/form-data" class="publish-form">
         {% csrf_token %}
 
-        <label>Título del anuncio</label>
-        {{ form.titulo }}
+        <label>Marca y modelo</label>
+        {{ form.marca_modelo }}
+
+        <label>Año de fabricación</label>
+        {{ form.año }}
+
+        <label>Kilometraje (km)</label>
+        {{ form.kilometraje }}
 
         <label>Precio</label>
         {{ form.precio }}
 
+        <label>Combustible</label>
+        {{ form.combustible }}
+
+        <label>Transmisión</label>
+        {{ form.transmision }}
+
+        <label>Estado general</label>
+        {{ form.estado_general }}
+
+        <label>Mantenimiento / Service</label>
+        {{ form.mantenimiento }}
+
+        <label>Documentación</label>
+        {{ form.documentacion }}
+
         <label>Ubicación</label>
         {{ form.ubicacion }}
 
-        <label>Descripción</label>
-        {{ form.descripcion }}
+        <label>Fotos del vehículo</label>
+        <input type="file" name="fotos" multiple required>
 
-        <label>Imagen del coche</label>
-        {{ form.imagen }}
-
-        <button class="btn-submit">Publicar</button>
+        <button class="btn-submit">Publicar vehículo</button>
     </form>
 
 </div>
