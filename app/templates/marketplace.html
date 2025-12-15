@@ -13,7 +13,20 @@
     <h2>Marketplace</h2>
 
     <div class="market-actions">
-        <button class="btn filter-btn">Filtros</button>
+        <div class="filter-panel" id="filterPanel">
+    <form method="GET" class="filter-form">
+
+        <label>Precio mínimo</label>
+        <input type="number" name="precio_min" placeholder="Desde $">
+
+        <label>Precio máximo</label>
+        <input type="number" name="precio_max" placeholder="Hasta $">
+
+        <button type="submit" class="btn apply-btn">Aplicar filtros</button>
+
+    </form>
+</div>
+
         <a href="{% url 'publicar_producto' %}" class="btn publish-btn">+ Publicar Producto</a>
 
     </div>
@@ -22,15 +35,18 @@
 <div class="market-container">
 
     <!-- MENU IZQUIERDO -->
-    <aside class="market-sidebar">
-        <h3>Categorías</h3>
-        <ul>
-            <li><a href="#">🏎 Autos</a></li>
-            <li><a href="#">Autos electricos</a></li>
-            <li><a href="#">>Autos 4x4</a></li>
-            <li><a href="#">Autos Automaticos</a></li>
-        </ul>
-    </aside>
+<aside class="market-sidebar">
+    <h3>Categorías</h3>
+    <ul>
+        <li><a href="{% url 'marketplace' %}">🚗 Todos los autos</a></li>
+        <li><a href="?combustible=electrico">⚡ Eléctricos</a></li>
+        <li><a href="?combustible=nafta">⛽ Nafta</a></li>
+        <li><a href="?combustible=diesel">🛢 Diésel</a></li>
+        <li><a href="?transmision=automatica">⚙ Automáticos</a></li>
+        <li><a href="?transmision=manual">🕹 Manuales</a></li>
+    </ul>
+</aside>
+
 
     <!-- GRILLA DE PRODUCTOS -->
     <section class="market-grid">

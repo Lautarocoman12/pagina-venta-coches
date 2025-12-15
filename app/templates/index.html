@@ -34,11 +34,11 @@
 <div class="selector-section">
 
 <div class="selector-options">
-    <button class="selector-btn active" data-img="1" data-title="Autos nuevos">Autos</button>
-    <button class="selector-btn" data-img="2" data-title="SUV y 4x4">SUV</button>
-    <button class="selector-btn" data-img="3" data-title="Pick Ups disponibles">Pick Ups</button>
-    <button class="selector-btn" data-img="4" data-title="Vehículos eléctricos">Eléctricos</button>
-    <button class="selector-btn" data-img="5" data-title="Modelos híbridos">Híbridos</button>
+    <button class="selector-btn active" data-img="6" data-title="Autos nuevos">Autos</button>
+    <button class="selector-btn" data-img="7" data-title="SUV y 4x4">Elegantes</button>
+    <button class="selector-btn" data-img="11" data-title="Pick Ups disponibles">Modernos</button>
+    <button class="selector-btn" data-img="9" data-title="Vehículos eléctricos">Eléctricos</button>
+    
 </div>
 
 <div class="selector-display">
@@ -52,13 +52,17 @@
     <div class="service-card">
         <img src="{% static 'img/iconoventa.png' %}" class="service-icon">
         <h3>¿Como vender mi coche?</h3>
-        <a href="#" class="service-link">Conocer →</a>
+        <a href="{% url 'comovender' %}" class="service-link">Conocer →</a>
     </div>
 
     <div class="service-card">
         <img src="{% static 'img/whatsappp.png' %}" class="service-icon">
         <h3>Chateá con nosotros</h3>
-        <a href="#" class="service-link">Iniciar conversación →</a>
+        <a href="https://wa.me/5491127894944?text=Hola%20quiero%20consultar%20por%20la%20venta%20de%20un%20vehículo"
+   class="service-link"
+   target="_blank">
+   Chatear →
+</a>
     </div>
 
     <div class="service-card">

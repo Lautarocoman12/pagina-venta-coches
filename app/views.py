@@ -1,7 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Coche, FotoCoche
 from .forms import CocheForm
-from .models import Coche
 
+
+# ----------------------
+# PÁGINAS BÁSICAS
+# ----------------------
 
 def index(request):
     return render(request, "index.html")
@@ -18,32 +22,35 @@ def registro(request):
 def dashboard(request):
     return render(request, "dashboard.html")
 
+def comovender(request):
+    return render(request, "comovender.html")
+
+
+# ----------------------
+# MARKETPLACE + FILTROS
+# ----------------------
 
 def marketplace(request):
     productos = Coche.objects.all().order_by("-fecha_publicacion")
-    return render(request, "marketplace.html", {"productos": productos})
+
+    # Filtros por categoría (sidebar)
+    combustible = request.GET.get("combustible")
+    transmision = request.GET.get("transmision")
+
+    if combustible:
+        productos = productos.filter(combustible=combustible)
+
+    if transmision:
+        productos = productos.filter(transmision=transmision)
+
+    return render(request, "marketplace.html", {
+        "productos": productos
+    })
 
 
-def publicar_producto(request):
-    if request.method == "POST":
-        form = CocheForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect("marketplace")
-    else:
-        form = CocheForm()
-
-    return render(request, "publicar_producto.html", {"form": form})
-
-
-
-def detalle_producto(request, pk):
-    producto = Coche.objects.get(pk=pk)
-    return render(request, "detalle_producto.html", {"producto": producto})
-
-
-from .models import Coche, FotoCoche
-from .forms import CocheForm
+# ----------------------
+# PUBLICAR PRODUCTO
+# ----------------------
 
 def publicar_producto(request):
     if request.method == "POST":
@@ -53,6 +60,7 @@ def publicar_producto(request):
         if form.is_valid():
             coche = form.save()
 
+            # Guardar múltiples fotos
             for foto in fotos:
                 FotoCoche.objects.create(
                     coche=coche,
@@ -60,8 +68,21 @@ def publicar_producto(request):
                 )
 
             return redirect("marketplace")
-
     else:
         form = CocheForm()
 
-    return render(request, "publicar_producto.html", {"form": form})
+    return render(request, "publicar_producto.html", {
+        "form": form
+    })
+
+
+# ----------------------
+# DETALLE DEL PRODUCTO
+# ----------------------
+
+def detalle_producto(request, pk):
+    producto = get_object_or_404(Coche, pk=pk)
+    return render(request, "detalle_producto.html", {
+        "producto": producto
+    })
+
